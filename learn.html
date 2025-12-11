@@ -1,0 +1,444 @@
+<!--Educational Page-->
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Page</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        overflow-x: hidden;
+        background: #f5e8ec;
+        position: relative;
+        z-index: -1;
+    }
+
+    body * {
+        position: relative;
+        z-index: 1;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 4vw;
+        padding-bottom: 0;
+        padding-top: 0;
+        margin-top: 0;
+    }
+
+    .content-card {
+        background: white;
+        padding: 20px;
+        width: 100%;
+        max-width: 900px;
+        border-radius: 24px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    .header {
+        margin-bottom: 20px;
+    }
+
+    .main-title {
+        font-size: 1.8rem;
+        font-weight: 900;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        color: #9b4447;
+        margin: 0;
+        text-align: left;
+    }
+
+    .sub-title {
+        font-size: 1rem;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        color: #6b2e2e;
+        line-height: 1.6;
+        text-align: left;
+    }
+
+    .mascot-header {
+        padding: 20px;
+        width: 100%;
+        max-width: 900px;
+        border-radius: 24px;
+
+        display: flex;
+        align-items: center;
+        gap: 50px;
+        margin: 30px auto 0px auto;
+        padding-bottom: 0;
+    }
+
+    .mascot-img {
+        max-width: 100%;
+        width: 300px;
+        height: auto;
+        flex-shrink: 0;
+    }
+
+    .mascot-text {
+        font-size: 1.5rem;
+        color: #9b4447;
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+
+    .mascot-text strong {
+        font-size: 3rem;
+        font-weight: 900;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+
+    .top-header {
+        background-color: white;
+        padding: 30px;
+        width: 100%;
+        max-width: 900px;
+        border-radius: 24px;
+
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        margin: 30px auto 30px auto;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-img {
+        max-width: 100%;
+        width: 600px;
+        height: auto;
+        flex-shrink: 0;
+    }
+
+    .header-img2 {
+        max-width: 100%;
+        width: 300px;
+        height: auto;
+        flex-shrink: 0;
+        margin: 20px auto;
+        display: block;
+        border-radius: 12px;
+    }
+
+    .block-image {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        margin: 20px auto;
+        display: block;
+        border-radius: 12px;
+    }
+
+    .header-text {
+        font-size: 1.5rem;
+    }
+
+    @media (max-width: 600px) {
+        .top-header-card {
+            flex-direction: column;
+            text-align: center;
+            gap: 14px;
+        }
+
+        .header-img {
+            width: 110px;
+        }
+
+        .mascot-header {
+            flex-direction: column;
+            text-align: center;
+            gap: 14px;
+        }
+
+        .mascot-img {
+            width: 110px;
+        }
+    }
+
+    .navbar {
+        width: 100%;
+        max-width: 900px;
+        margin: 20px auto;
+        background: #a83445;
+        padding: 14px 24px;
+
+        display: flex;
+        justify-content: center;
+        gap: 24px;
+
+        border-radius: 24px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+
+        position: sticky;
+        top: 10px;
+        z-index: 999;
+    }
+
+    .nav-links {
+    display: flex;
+    gap: 30px;
+    }
+
+    .navbar a {
+        color: #e8f5e9;
+        background: #98293a;
+        text-decoration: none;
+
+        padding: 10px 16px;
+        border-radius: 14px;
+
+        font-size: 1rem;
+        font-weight: 600;
+
+        transition: transform 0.2s ease, box-shadow 0.25s ease;
+    }
+
+    .navbar a:hover,
+    .navbar a.active {
+        background: #7f202e;
+        color: #ffffff;
+
+        transform: translateY(-3px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .hamburger {
+    display: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    }
+
+    .mobile-menu {
+    display: none;
+    flex-direction: column;
+    background-color: #a83445;
+    padding: 20px;
+    position: fixed;
+    top: 60px;
+    width: 100%;
+    left: 0;
+    z-index: 999;
+    }
+
+    .mobile-menu a {
+    padding: 13px 0;
+    font-size: 1.2rem;
+    text-align: center;
+    color: white;
+    display: block;
+    }
+
+    @media (max-width: 700px) {
+        .top-header {
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .sub-title {
+            font-size: 0.95rem;
+            text-align: left;
+        }
+
+        .header-img {
+            width: 70%;
+        }
+
+        .header-img2 {
+            width: 80%;
+        }
+        
+        .nav-links {
+            display: none;
+        }
+
+        .hamburger {
+            display: block;
+        }
+
+        .header-text {
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        .navbar {
+            max-width: 100%;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 12px 14px;
+            top: 0;
+            border-radius: 0;
+            max-width: 100%;
+            margin: 0;
+        }
+
+        .navbar a {
+            flex: 1 1 calc(50% - 10px);
+            text-align: center;
+        }
+    }
+
+    .floating-emojis {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+
+        z-index: 0;
+    }
+
+    .emoji {
+        position: absolute;
+        font-size: 2rem;
+        opacity: 0.5;
+        animation: breezeDrift linear forwards;
+        will-change: transform;
+    }
+
+    @keyframes breezeDrift {
+        0% {
+            transform: translate(var(--start-x), 100vh) rotate(0deg);
+            opacity: 0;
+        }
+        15% {
+            opacity: 0.5;
+        }
+        50% {
+            transform: translate(calc(var(--start-x) + var(--sway)), 50vh) rotate(8deg);
+        }
+        100% {
+            transform: translate(calc(var(--start-x) - var(--sway)), -10vh) rotate(-8deg);
+            opacity: 0;
+        }
+    }
+
+    .bottom-bar {
+        width: 100%;
+        height: 90px;
+        background: #a83445;
+        color: white;
+        font-size: 1rem;
+        text-align: center;
+        padding: 14px 24px;
+        /*margin-top: 20px;*/
+        border-top-left-radius: 24px;
+        border-top-right-radius: 24px;
+        box-shadow: 0 -4px 16px rgba(0,0,0,0.12);
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+  <script>
+    function toggleMenu() {
+        const menu = document.getElementById("mobileMenu");
+        menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+    }
+  </script>
+ </head>
+ <body>
+    <div class="floating-emojis"></div>
+    <div class="navbar">
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="learn.html" class="active">Learn</a>
+            <a href="play.html">Play</a>
+            <a href="explore.html">Explore</a>
+            <a href="about.html">About</a>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">☰</div> 
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="learn.html" class="active">Learn</a>
+        <a href="play.html">Play</a>
+        <a href="explore.html">Explore</a>
+        <a href="about.html">About</a>
+    </div>
+    
+    <div class="mascot-header">
+        <img src="./pics/mascot-learn.png" class="mascot-img">
+        <div class="mascot-text">
+            <strong>Mag-aral tayo, kaibigan!</strong>
+            <p>Let's learn about what neocolonialism is, and how it affects our culture.</p>
+        </div>
+    </div>
+
+    <div class="top-header">
+        <div class="header-text">
+            <div class="header">
+                <h1 class="main-title"><b>What is Neocolonialism and how does it affect us?</b></h1>
+            </div>
+            <p class="sub-title"><b>Colonialism</b> is the act of a more <b>powerful country enacting physical occupation and control</b> over a less powerful country and <b>influencing</b> it in political, economic, and cultural ways that follow the desires of the occupant.</p>
+            <p class="sub-title"><br><b>Neocolonialism</b> however is the practice of <b>larger, influencial, developed countries continuing to influence and control less powerful countries</b> in economic, cultural, and political aspects. However, it is done without direct political or territorial control.</p>
+            <p class="sub-title"><br>This affects countries like the Philippines when first world countries like the United States <b>expresses power over our society</b> in indirect ways. From the restaurants and businesses that dominate our economy to the political figures and beliefs that influence our government.</p>
+        </div>
+        <div>
+            <img src="./pics/ph-flag.jpg" class="header-img">
+            <h2><br><br></h2>
+            <img src="./pics/us-flag.png" class="header-img">
+        </div>
+    </div>
+    <div class="top-header">
+        <img src="./pics/philippine_eagle2.jpg" class="header-img2">
+        <div class="header-text">
+            <div class="header">
+                <h1 class="main-title"><b>The Importance of Filipino Culture</b></h1>
+            </div>
+            <p class="sub-title">Maintaining <b>appreciation and love for our culture is vital</b> in this day and age as more and more cultures come together. The unification of the world and exchange of cultures is a positive change, however <b>we must remember not to lose sight of our own identity.</b></p>
+            <p class="sub-title"><br>The Philippines has been colonized and occupied by 3 different first world countries and has changed significantly as a result, and global trends influence what is popular in the modern day.</p>
+            <p class="sub-title"><br>These can result in the Filipino population <b>conforming to or following the ideals of other countries</b> and showing more support for them rather than the Philippines. If this continues, the <b>history and culture of the Philippines would continue to diminish</b> until it is forgotten and our identity as Filipinos fades away. That is why it is vital for us to continue to show appreciation and love towards our native culture!</p>
+            <div class="header">
+                <h1 class="main-title"><br><b>The Beauty of Filipino Culture</b></h1>
+            </div>
+            <p class="sub-title">The Philippines has <b>many wonders to offer and be appreciated</b>, from beautiful animals and locations to amazing festivals and foods. From cultural traditions like Kalinga batok tattoos to the breathtaking animals like the Philippine eagle, <b>there is so much beauty in our culture that we have to preserve and keep alive.</b></p>
+        </div>
+    </div>
+ <script>
+    const EMOJIS = ["🇵🇭", "🌺", "✨", "🌴"];
+    function spawnEmoji() {
+        const container = document.querySelector(".floating-emojis");
+        const emoji = document.createElement("div");
+
+        emoji.classList.add("emoji");
+        emoji.textContent = EMOJIS[Math.floor(Math.random() * EMOJIS.length)];
+
+        const startX = Math.random() * 100; // vw
+        emoji.style.setProperty('--start-x', startX + "vw");
+
+        const sway = (Math.random() * 15 + 5) + "vw";
+        emoji.style.setProperty('--sway', sway);
+
+        const duration = (20 + Math.random() * 6) + "s";
+        emoji.style.animationDuration = duration;
+
+        container.appendChild(emoji);
+
+        setTimeout(() => emoji.remove(), 20000);
+    }
+    setInterval(spawnEmoji, 1000);
+ </script>
+ <div class="bottom-bar"><b>Re:Discover</b><br><i>Decolonizing our imaginations to Re:Discover Filipino identity</i>
+    <br><a href="references.html"><small>References</small></a>
+ </div>
+ </body>
+</html>

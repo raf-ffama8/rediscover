@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Page</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        overflow-x: hidden;
+        background: #e8f4f5;
+        position: relative;
+        z-index: -1;
+    }
+
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 4vw;
+        padding-bottom: 3;
+        padding-top: 0;
+        margin: 30px auto 0px auto;
+    }
+
+    .content-card {
+        background: white;
+        padding: 20px;
+        width: 100%;
+        max-width: 900px;
+        border-radius: 24px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    .main-title {
+        font-size: 1.8rem;
+        font-weight: 1000;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        color: #4491a6;
+        margin: 0;
+        text-align: center;
+    }
+
+    .sub-title {
+        font-size: 1rem;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        color: #004a69;
+        line-height: 1.5;
+        text-align: left;
+    }
+
+    .back-btn {
+        padding: 10px;
+        border: none;
+        border-radius: 14px;
+        font-size: 1rem;
+        font-weight: 200;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        cursor: pointer;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        position: relative;
+        background: #4491a6; 
+        color: #ffffff;
+    }
+
+    .back-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .bottom-bar {
+        width: 100%;
+        height: 50px;
+        background: #349a96;
+        color: white;
+        font-size: 1rem;
+        line-height: 1.6;
+        text-align: center;
+        padding: 14px 6px;
+        /*margin-top: 20px;*/
+        border-top-left-radius: 24px;
+        border-top-right-radius: 24px;
+        box-shadow: 0 -4px 16px rgba(0,0,0,0.12);
+    }
+ </style>
+ </head>
+ <body>
+    <div class="main-container">
+        <div class="content-card">
+            <button class="back-btn" onclick="location.href='index.html'">< Home</button>
+            <div class="header">
+                <h1 class="main-title">References</h1>
+            </div>
+            <p class="sub-title"><b>Learn Page<br></b></p>
+            <p class="sub-title">
+                Smith, Whitney. (n.d.). <i>Flag of the Philippines [Photograph].</i> Britannica.<br>https://cdn.britannica.com/73/3473-050-3A33E719/Flag-Philippines.jpg
+                <br><br>Smith, Whitney. (n.d.). <i>Flag of the United States of America [Photograph].</i> Britannica.<br>https://cdn.britannica.com/33/4833-050-F6E415FE/Flag-United-States-of-America.jpg
+                <br><br>Arnal, Kike. (n.d.). <i>Great Philippine Eagle [Photograph].</i> All About Birds.<br>https://www.allaboutbirds.org/news/in-the-aerie-of-the-philippine-eagle/
+            </p>
+            <p class="sub-title"><b>Play Page</b></p>
+            <p class="sub-title">
+                <i>[Photograph of Jose Rizal].</i> (n.d.). Britannica.<br>https://cdn.britannica.com/34/136034-050-CD2288F0/Jose-Rizal.jpg
+                <br><br>Amorsolo, Fernando. (n.d.). <i>The First Baptism [Painting].</i> History Maps.<br>https://history-maps.com/story/History-of-Christianity/event/Christianity-in-the-Philippines
+                <br><br>Francisco, Carlos. (1964). <i>Filipino Struggles Through History [Painting].</i> ABS-CBN.<br>https://www.abs-cbn.com/news/business/2025/12/11/unionbank-eyes-20-million-customers-in-2026-2024
+                <br><br>Lukkarinen, Juha (n.d.). <i>The Ibalois in the 1900s [Photograph].</i> Facebook.<br>https://www.facebook.com/photo/?fbid=633264767081020&set=pb.100066719981457.-2207520000
+                <br><br><i>[Photograph of Lake Holon, South Cotabato].</i> (n.d.). SoxPH.<br>https://www.soxph.com/2016/03/lake-holon-crown-jewel-of-south-cotabato.html
+                <br><br>Mario Feir Filipiniana Library. (n.d.) <i>[Aeta family in their traditional lean-to house, 20th century].</i> Yodisphere.<br>https://www.yodisphere.com/2022/03/Aeta-Culture-Customs-Tradition-Indigenous-People-Philippines.html
+                <br><br>Arnal, Kike. (n.d.). <i>Great Philippine Eagle [Photograph].</i> All About Birds.<br>https://www.allaboutbirds.org/news/in-the-aerie-of-the-philippine-eagle/
+                <br><br>Golangco, Jasper (n.d.). <i>Carlito syrichta (Philippine Tarsier) [Photograph].</i> Wikipedia.<br>https://en.wikipedia.org/wiki/Tarsier#/media/File:Tarsier-GG.jpg
+                <br><br><i>[Photograph of a Palawan Peacock-Pheasant].</i> (n.d.) The World’s Rarest Birds<br>https://theworldsrarestbirds.com/palawan-peacock-pheasant/
+            </p>
+            <p class="sub-title"><b>Explore Page</b></p>
+            <p class="sub-title">
+                <i>[Photograph of Ube Jam].</i> (n.d.). Belle Trends.<br>https://belle-trends.com/cdn/shop/products/ubejam_1024x1024.jpg?v=1657883015
+                <br><br><i>[Photograph of Dried Mango].</i> (n.d.) We Are Santos.<br>https://www.wearesantos.com/cdn/shop/collections/Mango.jpg?v=1726788463
+                <br><br><i>[Photograph of a Yakan Weaver].</i> (n.d.) 7641 Islands.<br>https://7641islands.ph/explore/immerse-yourself-in-culture-through-yakan-master-weaver-ambalang-ausalin/
+                <br><br><i>[Photograph of Native Bags].</i> (n.d.) Kultura.<br>https://www.kulturafilipino.com/cdn/shop/collections/bags_3024x.jpg?v=1649843787
+                <br><br>Amorsolo, Fernando. (1947). <i>Planting Rice [Painting].</i> Salcedo Auctions.<br>https://api-2.salcedoauctions.com/assets/photos/94864.jpg
+                <br><br>Amorsolo, Fernando. (1950). <i>Fruit Gatherer [Painting].</i> Janelle Renee.<br>https://janellerenee.home.blog/wp-content/uploads/2019/05/b2c355a8-0847-450d-9018-d2bdd9e098c9.jpeg
+                <br><br>Ocampo, Hernando. (1969). <i>Genesis [Painting].</i> Cultural Center of the Philippines<br>https://ccp-wagtail-bucket.s3.amazonaws.com/images/V_WORKS_Genesis_1_wKu9CXf.width-3000.jpg
+                <br><br>Manansala, Vicente. (1976). <i>The Bird Seller [Painting].</i> Mutual Art.<br>https://media.mutualart.com/Images/2023_03/21/17/174432199/vicente-manansala-QCDHB-570.Jpeg
+                <br><br>Ligaya, Maria. (n.d.). <i>The Chocolate Hills in The Philippines [Photograph].</i> Travel + Leisure.<br>https://www.travelandleisure.com/attractions/landmarks-monuments/chocolate-hills-philippines
+                <br><br><i>[Photograph of the Cagsawa Ruins].</i> (n.d.).
+                <br><br><i>[Photograph of the Rizal Monument].</i> (n.d.). Wikipedia.<br>https://upload.wikimedia.org/wikipedia/commons/6/6b/Rizal_Monument_%28Manila%2C_2024%29.jpg
+                <br><br><i>[Photograph of the Banaue Rice Terraces].</i> (n.d.). Island Hopping in the Philippines.<br>https://islandhoppinginthephilippines.com/luzon/banaue-rice-terraces/
+                <br><br>Remote Islands. (n.d.) <i>[Photograph of a Tarsier].</i><br>https://www.remotelands.com/travelogues/the-adorable-wildlife-of-the-philippines-above-and-below-the-water/
+                <br><br><i>[Photograph of a Tamaraw].</i> (n.d.). Wikipedia.<br>https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Bubalus_mindorensis_by_Gregg_Yan_01.jpg/1280px-Bubalus_mindorensis_by_Gregg_Yan_01.jpg
+                <br><br><i>[Photograph of a Philippine Eagle].</i> (n.d.). Facebook.<br>https://www.facebook.com/AirAsia/photos/davao-experience-the-rare-opportunity-to-get-up-close-and-personal-with-philippi/10150845029442387/?locale=es_LA
+                <br><br>Strater, Tim. (n.d.). <i>Visayan Spotted Deer [Photograph].</i> Animalia.<br>https://animalia.bio/visayan-spotted-deer
+            </p>
+        </div>
+    </div>
+     <div class="bottom-bar"><b>Re:Discover</b><br><i>Decolonizing our imaginations to Re:Discover Filipino identity</i></div>
+</body>
+</html>

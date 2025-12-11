@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore More</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #e8f5e9;
+      position: relative;
+      z-index: -1;
+    }
+
+    body * {
+        position: relative;
+        z-index: 1;
+    }
+
+    .navbar {
+        width: 100%;
+        max-width: 900px;
+        margin: 20px auto;
+        background: #2e7d32;
+        padding: 12px 16px;
+
+        display: flex;
+        justify-content: center;
+        gap: 24px;
+
+        border-radius: 24px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+
+        position: sticky;
+        top: 10px;
+        z-index: 999;
+    }
+
+    .nav-links {
+    display: flex;
+    gap: 30px;
+    }
+
+    .navbar a {
+        color: #e8f5e9;
+        background: #227227;
+        text-decoration: none;
+
+        padding: 10px 16px;
+        border-radius: 14px;
+
+        font-size: 1rem;
+        font-weight: 600;
+
+        transition: transform 0.2s ease, box-shadow 0.25s ease;
+    }
+
+    .navbar a:hover,
+    .navbar a.active {
+        background: #1b5e20;
+        color: #ffffff;
+
+        transform: translateY(-3px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .hamburger {
+    display: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    }
+
+    .mobile-menu {
+    display: none;
+    flex-direction: column;
+    background-color: #2e7d32;
+    padding: 20px;
+    position: fixed;
+    top: 60px;
+    width: 100%;
+    left: 0;
+    z-index: 999;
+    }
+
+    .mobile-menu a {
+    padding: 13px 0;
+    font-size: 1.2rem;
+    text-align: center;
+    color: white;
+    display: block;
+    }
+
+    @media (max-width: 700px) {
+        .nav-links {
+            display: none;
+        }
+
+        .hamburger {
+            display: block;
+        }
+
+        .navbar {
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 12px 16px;
+            top: 0;
+            border-radius: 0;
+            max-width: 100%;
+            margin: 0;
+        }
+
+        .navbar a {
+            flex: 1 1 calc(50% - 10px);
+            text-align: center;
+        }
+
+        .mascot-header {
+            flex-direction: column;
+            text-align: center;
+            gap: 14px;
+        }
+
+        .mascot-img {
+            width: 110px;
+        }
+    }
+
+    .mascot-header {
+        padding: 20px;
+        width: 100%;
+        max-width: 900px;
+        border-radius: 24px;
+
+        display: flex;
+        align-items: center;
+        gap: 50px;
+        margin: 30px auto 0px auto;
+        padding-bottom: 0;
+    }
+
+    .mascot-img {
+        max-width: 100%;
+        width: 300px;
+        height: auto;
+        flex-shrink: 0;
+    }
+
+    .mascot-text {
+        font-size: 1.5rem;
+        color: #2e7d32;
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+
+    .mascot-text strong {
+        font-size: 3rem;
+        font-weight: 900;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+
+    .content-card {
+      background: white;
+      border-radius: 24px;
+      padding: 4%;
+      max-width: 1000px;
+      width: 90%;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h1 {
+      color: #2e7d32;
+      font-size: 2em;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #1b5e20;
+    }
+
+    .divider {
+      width: 60%;
+      border: none;
+      height: 3px;
+      background: linear-gradient(to right, #2e7d32, #81c784);
+      margin: 20px auto;
+      border-radius: 5px;
+    }
+
+    .tiles {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .tile {
+      background: #f1f8f1;
+      border-radius: 20px;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      text-align: center;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .tile:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .tile img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      margin-bottom: 10px;
+      border-radius: 12px;
+    }
+
+    .tile h3 {
+      color: #2e7d32;
+      margin: 10px 0 5px 0;
+    }
+
+    .tile p {
+      font-size: 0.95em;
+      color: #1b5e20;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 700px) {
+      .tiles {
+        grid-template-columns: 1fr;
+      }
+      .tile img {
+        max-width: 70%;
+        height: auto;
+      }
+    }
+
+    .floating-emojis {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+
+        z-index: 0;
+    }
+
+    .emoji {
+        position: absolute;
+        font-size: 2rem;
+        opacity: 0.5;
+        animation: breezeDrift linear forwards;
+        will-change: transform;
+    }
+
+    @keyframes breezeDrift {
+        0% {
+            transform: translate(var(--start-x), 100vh) rotate(0deg);
+            opacity: 0;
+        }
+        15% {
+            opacity: 0.5;
+        }
+        50% {
+            transform: translate(calc(var(--start-x) + var(--sway)), 50vh) rotate(8deg);
+        }
+        100% {
+            transform: translate(calc(var(--start-x) - var(--sway)), -10vh) rotate(-8deg);
+            opacity: 0;
+        }
+    }
+
+    .bottom-bar {
+        width: 100%;
+        height: 70px;
+        background: #2e7d32;
+        color: white;
+        font-size: 1rem;
+        text-align: center;
+        line-height: 1.6;
+        padding: 14px 6px;
+        margin-top: 40px;
+        border-top-left-radius: 24px;
+        border-top-right-radius: 24px;
+        box-shadow: 0 -4px 16px rgba(0,0,0,0.12);
+    }
+  </style>
+  <script>
+    function toggleMenu() {
+        const menu = document.getElementById("mobileMenu");
+        menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+    }
+  </script>
+</head>
+<body>
+  <div class="floating-emojis"></div>
+  <!-- NAVIGATION BAR -->
+  <div class="navbar">
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="learn.html">Learn</a>
+            <a href="play.html">Play</a>
+            <a href="explore.html" class="active">Explore</a>
+            <a href="about.html">About</a>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">☰</div> 
+  </div>
+  <!-- Mobile Dropdown Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="learn.html">Learn</a>
+        <a href="play.html">Play</a>
+        <a href="explore.html" class="active">Explore</a>
+        <a href="about.html">About</a>
+  </div>
+
+  <div class="mascot-header">
+        <img src="./pics/mascot-explore.png" class="mascot-img">
+        <div class="mascot-text">
+            <strong>Tuklasin natin!</strong>
+            <p>Let's look at some of the wonderful things that can be found in the Philippines!</p>
+        </div>
+  </div>
+
+  <div class="content-card">
+    <h1>Explore More</h1>
+    <hr class="divider">
+    <p>Discover Filipino culture through four categories. Click a tile to explore more about each!</p>
+
+    <div class="tiles">
+      <!-- Products -->
+      <a href="products.html" class="tile">
+        <img src="./pics/ube_jam.png" alt="Products">
+        <h3>Products</h3>
+        <p>Local Filipino-made goods and crafts</p>
+      </a>
+
+      <!-- Arts -->
+      <a href="arts.html" class="tile">
+        <img src="./pics/fruit_gatherer.png" alt="Arts">
+        <h3>Arts</h3>
+        <p>Traditional and modern Filipino artworks</p>
+      </a>
+
+      <!-- Places -->
+      <a href="places.html" class="tile">
+        <img src="./pics/cagsawa_ruins.png" alt="Places">
+        <h3>Places</h3>
+        <p>Iconic cultural and natural heritage sites</p>
+      </a>
+
+      <!-- Animals -->
+      <a href="animals.html" class="tile">
+        <img src="./pics/philippine_eagle.png" alt="Animals">
+        <h3>Animals</h3>
+        <p>Native and endemic animals of the Philippines</p>
+      </a>
+    </div>
+  </div>
+  <script>
+    const EMOJIS = ["🇵🇭", "🌺", "✨", "🌴"];
+    function spawnEmoji() {
+        const container = document.querySelector(".floating-emojis");
+        const emoji = document.createElement("div");
+
+        emoji.classList.add("emoji");
+        emoji.textContent = EMOJIS[Math.floor(Math.random() * EMOJIS.length)];
+
+        const startX = Math.random() * 100; // vw
+        emoji.style.setProperty('--start-x', startX + "vw");
+
+        const sway = (Math.random() * 15 + 5) + "vw";
+        emoji.style.setProperty('--sway', sway);
+
+        const duration = (20 + Math.random() * 6) + "s";
+        emoji.style.animationDuration = duration;
+
+        container.appendChild(emoji);
+
+        setTimeout(() => emoji.remove(), 20000);
+    }
+    setInterval(spawnEmoji, 1000);
+ </script>
+ <div class="bottom-bar"><b>Re:Discover</b><br><i>Decolonizing our imaginations to Re:Discover Filipino identity</i>
+    <br><a href="references.html"><small>References</small></a>
+ </div>
+</body>
+</html>
